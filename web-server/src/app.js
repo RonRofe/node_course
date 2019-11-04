@@ -28,6 +28,7 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
+        title: 'Help',
         message: 'Help message is here',
         title: 'Help',
         name: 'Ron Rofe'
@@ -38,6 +39,22 @@ app.get('/weather', (req, res) => {
     res.send({
         forecast: '50 degrees',
         location: 'Tel Aviv'
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Ron Rofe',
+        errorMessage: 'Help article not found'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Ron Rofe',
+        errorMessage: 'Page not found'
     })
 })
 
