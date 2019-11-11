@@ -9,6 +9,10 @@
 // Usage
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
+const ObjectID = mongodb.ObjectID
+
+//          or --
+const { MongoClient, ObjectID } = require('mongodb')
 
 // Connecting to the DB
 const connectionURL = 'mongodb://127.0.01:27017' // path
