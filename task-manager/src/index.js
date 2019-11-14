@@ -6,6 +6,12 @@ const taskRouter = require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
+
+
+
+
+
+
 const multer = require('multer')
 const upload = multer({
     dest: 'images',
@@ -17,15 +23,27 @@ const upload = multer({
         // callback(undefined, true)
 
         if(!file.originalname.match(/\.(doc|docs)$/)) {
-            return cb(new Error('File must be a PDF'))
+            return cb(new Error('File must be a Word document'))
         }
 
         cb(undefined, true)
     }
 })
+
+const errorMiddleware = (req, res, next) => {
+    throw new Error('From my middleware')
+}
+
 app.post('/upload', upload.single('upload'), (req, res) => {
     res.send()
+}, (error, req, res, next) => {
+    res.status(400).send({ error: error.message })
 })
+
+
+
+
+
 
 app.use(express.json())
 app.use(userRouter)
