@@ -7,7 +7,9 @@ socket.on('message', (msg) => {
 document.querySelector('#msg-form').addEventListener('submit', (e) => {
     e.preventDefault() // prevent from submit
     const message = e.target.elements.message.value
-    socket.emit('sendMessage', message)
+    socket.emit('sendMessage', message, msg => {
+        console.log('The message was delivered!', msg)
+    })
 })
 
 document.querySelector('#send-location').addEventListener('click', () => {
