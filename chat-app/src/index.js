@@ -30,13 +30,13 @@ io.on('connection', (socket) => {
         callback()
     })
 
-    socket.on('disconnect', () => {
-        io.emit('message', 'A user has left!')
+    socket.on('sendLocation', (coords, callback) => {
+        io.emit('locationMessage', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+        callback()
     })
 
-    socket.on('sendLocation', (coords, callback) => {
-        socket.broadcast.emit('message', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
-        callback()
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user has left!')
     })
 })
 
