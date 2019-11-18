@@ -29,3 +29,5 @@ request
 ## Techs
 Express web server
 Web sockets
+MongoDB
+JWT
