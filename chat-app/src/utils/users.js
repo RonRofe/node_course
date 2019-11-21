@@ -39,7 +39,6 @@ const removeUser = id => {
 }
 
 const getUser = id => {
-    room == room.trim().toLowerCase()
     return users.find(user => user.id === id)
 }
 
